@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "7a2c33e5-465a-4cd8-b053-06df16d5e3dd",
+		"name": "Default",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2798245"
+	},
+	"item": [
+		{
+			"name": "hello",
+			"item": [
+				{
+					"name": "hello",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Hello Stefan! You are so pretty Mouse <3 <3 <3\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/hello.php?name=Stefan&kind=Mouse",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"hello.php"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Stefan"
+								},
+								{
+									"key": "kind",
+									"value": "Mouse"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "hello",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/hello.php",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"hello.php"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 May 2022 08:44:25 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "XDEBUG_SESSION=www-data; expires=Fri, 27-May-2022 09:44:25 GMT; Max-Age=3600; path=/"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "Hello World!"
+						},
+						{
+							"name": "hello",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/hello.php?name=Stefan&kind=Mouse",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"hello.php"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Stefan"
+										},
+										{
+											"key": "kind",
+											"value": "Mouse"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 31 May 2022 10:12:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "Hello Stefan! You are so pretty Mouse \n<3 \n    <3 \n        <3"
+						}
+					]
+				},
+				{
+					"name": "json",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body contains valid keys\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property(\"welcome\");",
+									"    pm.expect(jsonData).to.have.property(\"your-data\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{host}}/json.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"json.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\"?>\n<params>\n    <name>Fabian</name>\n    <kind>Dog</kind>\n</params>\n"
+						},
+						"url": {
+							"raw": "{{host}}/xml.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"xml.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "basic",
+			"item": [
+				{
+					"name": "not-authorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Not authorized!!!\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/basic.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"basic.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "already-authorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Hello dwojcik.\");",
+									"    pm.expect(pm.response.text()).to.include(\"You entered admn123 as your password.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/basic.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"basic.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "custom",
+			"item": [
+				{
+					"name": "not-authorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "XSuperSafeAuth",
+								"value": "admin123",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/custom.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"custom.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "already-authorized",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "XSuperSafeUser",
+								"value": "{{username}}",
+								"type": "text"
+							},
+							{
+								"key": "XSuperSafeAuth",
+								"value": "{{xssToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/custom.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"custom.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 777\", function () {",
+									"    pm.response.to.have.status(777);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"{{username}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/login.php",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login.php"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const authHeader = 'XSuperSafeAuth';",
+							"const authVariable = 'xssToken';",
+							"",
+							"var needsAuthentication = false;",
+							"",
+							"pm.request.headers.each(function (header) {",
+							"    if (header.key === authHeader && header.value === '{{' + authVariable + '}}') {",
+							"        needsAuthentication = true;",
+							"    }",
+							"});",
+							"",
+							"if (needsAuthentication) {",
+							"    pm.sendRequest({",
+							"        url: pm.variables.get('host') + '/login.php',",
+							"        method: 'POST',",
+							"        header: {",
+							"            'Content-Type': 'application/json',",
+							"        },",
+							"        body: {",
+							"            mode: 'raw',",
+							"            raw: JSON.stringify({",
+							"                username: pm.variables.get('username'),",
+							"                password: pm.variables.get('password'),",
+							"            })",
+							"        }",
+							"    }, function (error, response) {",
+							"        console.log(response)",
+							"        if (error) {",
+							"            console.log(error);",
+							"        } else {",
+							"            if (response.json().success) {",
+							"                pm.variables.set(authVariable, response.json().secret);",
+							"            } else {",
+							"                console.log(response.json().error);",
+							"            }",
+							"        }",
+							"    });",
+							"}",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "graphql",
+			"item": [
+				{
+					"name": "initialImport",
+					"item": [
+						{
+							"name": "Feature - get",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-API-Key",
+										"value": "499754f2f4719a04c969626737e6acc7",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n  getFeature(id: 10, defaultLanguage: \"en\") {\n    id\n    key\n    fullpath\n    published\n    creationDate\n    modificationDate\n  }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://brw.local/pimcore-graphql-webservices/initialImport",
+									"protocol": "https",
+									"host": [
+										"brw",
+										"local"
+									],
+									"path": [
+										"pimcore-graphql-webservices",
+										"initialImport"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

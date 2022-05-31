@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    application:
+        build: docker/application
+        working_dir: /application
+        volumes:
+            - .:/application
+            - ./docker/application:/docker
+        ports:
+            - "${APPLICATION_IP}:80:80"
+            - "${APPLICATION_IP}:443:443"
+        environment:
+            XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST}
+
+    postman:
+        build: docker/postman
+        working_dir: /application
+        volumes:
+            - .:/application

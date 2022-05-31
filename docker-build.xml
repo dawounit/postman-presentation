@@ -1,0 +1,36 @@
+<project name="postman-sandbox" default="run">
+    <target name="run" description="Run previously built environment.">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="stop"/>
+        </exec>
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="up -d --remove-orphans"/>
+        </exec>
+        <echo>To enter containers, use one of the following commands:</echo>
+        <echo>docker-compose exec application bash</echo>
+    </target>
+
+    <target name="build" description="Build or rebuild environment.">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="down --rmi all --volumes --remove-orphans"/>
+        </exec>
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="build --no-cache"/>
+        </exec>
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="up -d --remove-orphans"/>
+        </exec>
+    </target>
+
+    <target name="status" description="Show status of environment.">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="ps"/>
+        </exec>
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="exec -T application supervisorctl status"/>
+        </exec>
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="exec -T postman supervisorctl status"/>
+        </exec>
+    </target>
+</project>

@@ -1,0 +1,7 @@
+<project name="postman-sandbox" default="run">
+    <target name="run-collection">
+        <exec executable="docker-compose" passthru="true" checkreturn="true">
+            <arg line="exec -T postman newman run postman/collection.json -e postman/credentials.json --insecure"/>
+        </exec>
+    </target>
+</project>
